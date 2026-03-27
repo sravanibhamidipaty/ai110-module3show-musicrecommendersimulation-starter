@@ -1,0 +1,191 @@
+Loaded songs: 18
+
+=== Profile: High-Energy Pop ===
+Preferences: genre=pop, mood=happy, energy=0.8, likes_acoustic=False
+Top 5 recommendations:
+
+1. Sunrise City
+   Score   : 4.46
+   Reasons :
+     - +1.0 genre match
+     - +1.0 mood match
+     - +1.96 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+2. Rooftop Lights
+   Score   : 3.42
+   Reasons :
+     - +1.0 mood match
+     - +1.92 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+3. Gym Hero
+   Score   : 3.24
+   Reasons :
+     - +1.0 genre match
+     - +1.74 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+4. Night Drive Loop
+   Score   : 2.40
+   Reasons :
+     - +1.90 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+5. City Cipher
+   Score   : 2.38
+   Reasons :
+     - +1.88 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+
+=== Profile: Chill Lofi ===
+Preferences: genre=lofi, mood=chill, energy=0.4, likes_acoustic=True
+Top 5 recommendations:
+
+1. Midnight Coding
+   Score   : 4.46
+   Reasons :
+     - +1.0 genre match
+     - +1.0 mood match
+     - +1.96 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+2. Library Rain
+   Score   : 4.40
+   Reasons :
+     - +1.0 genre match
+     - +1.0 mood match
+     - +1.90 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+3. Focus Flow
+   Score   : 3.50
+   Reasons :
+     - +1.0 genre match
+     - +2.00 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+4. Spacewalk Thoughts
+   Score   : 3.26
+   Reasons :
+     - +1.0 mood match
+     - +1.76 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+5. Coffee Shop Stories
+   Score   : 2.44
+   Reasons :
+     - +1.94 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+
+=== Profile: Deep Intense Rock ===
+Preferences: genre=rock, mood=intense, energy=0.9, likes_acoustic=False
+Top 5 recommendations:
+
+1. Storm Runner
+   Score   : 4.48
+   Reasons :
+     - +1.0 genre match
+     - +1.0 mood match
+     - +1.98 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+2. Gym Hero
+   Score   : 3.44
+   Reasons :
+     - +1.0 mood match
+     - +1.94 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+3. Neon Warehouse
+   Score   : 2.48
+   Reasons :
+     - +1.98 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+4. Iron Skyline
+   Score   : 2.42
+   Reasons :
+     - +1.92 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+5. Sunrise City
+   Score   : 2.34
+   Reasons :
+     - +1.84 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+
+=== Profile: Edge Case: High Energy + Sad Mood ===
+Preferences: genre=pop, mood=sad, energy=0.9, likes_acoustic=False
+Top 5 recommendations:
+
+1. Gym Hero
+   Score   : 3.44
+   Reasons :
+     - +1.0 genre match
+     - +1.94 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+2. Sunrise City
+   Score   : 3.34
+   Reasons :
+     - +1.0 genre match
+     - +1.84 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+3. Storm Runner
+   Score   : 2.48
+   Reasons :
+     - +1.98 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+4. Neon Warehouse
+   Score   : 2.48
+   Reasons :
+     - +1.98 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+5. Iron Skyline
+   Score   : 2.42
+   Reasons :
+     - +1.92 energy closeness (x2.0)
+     - +0.5 non-acoustic preference match
+
+
+=== Profile: Edge Case: Unknown Genre/Mood ===
+Preferences: genre=kpop, mood=melancholic, energy=0.5, likes_acoustic=True
+Top 5 recommendations:
+
+1. Midnight Coding
+   Score   : 2.34
+   Reasons :
+     - +1.84 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+2. Focus Flow
+   Score   : 2.30
+   Reasons :
+     - +1.80 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+3. Coffee Shop Stories
+   Score   : 2.24
+   Reasons :
+     - +1.74 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+4. Library Rain
+   Score   : 2.20
+   Reasons :
+     - +1.70 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+
+5. Winter Letters
+   Score   : 2.16
+   Reasons :
+     - +1.66 energy closeness (x2.0)
+     - +0.5 acoustic preference match
+

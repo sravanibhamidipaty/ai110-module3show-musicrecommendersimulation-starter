@@ -2,6 +2,11 @@ from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass
 import csv
 
+GENRE_MATCH_POINTS = 1.0
+MOOD_MATCH_POINTS = 1.0
+ENERGY_WEIGHT = 2.0
+
+
 @dataclass
 class Song:
     """
@@ -19,6 +24,7 @@ class Song:
     danceability: float
     acousticness: float
 
+
 @dataclass
 class UserProfile:
     """
@@ -30,11 +36,13 @@ class UserProfile:
     target_energy: float
     likes_acoustic: bool
 
+
 class Recommender:
     """
     OOP implementation of the recommendation logic.
     Required by tests/test_recommender.py
     """
+
     def __init__(self, songs: List[Song]):
         self.songs = songs
 
@@ -92,18 +100,19 @@ def _score_song(
     reasons: List[str] = []
 
     if song_dict["genre"].strip().lower() == user_genre.strip().lower():
-        score += 2.0
-        reasons.append("+2.0 genre match")
+        score += GENRE_MATCH_POINTS
+        reasons.append(f"+{GENRE_MATCH_POINTS:.1f} genre match")
 
     if song_dict["mood"].strip().lower() == user_mood.strip().lower():
-        score += 1.0
-        reasons.append("+1.0 mood match")
+        score += MOOD_MATCH_POINTS
+        reasons.append(f"+{MOOD_MATCH_POINTS:.1f} mood match")
 
-    # Energy bonus is in [0, 1]. Exact match gets +1.0, far away gets closer to +0.0.
+    # Base energy closeness is in [0, 1]; experiment scales it by ENERGY_WEIGHT.
     energy_gap = abs(float(song_dict["energy"]) - float(target_energy))
-    energy_bonus = max(0.0, 1.0 - energy_gap)
+    energy_bonus = max(0.0, 1.0 - energy_gap) * ENERGY_WEIGHT
     score += energy_bonus
-    reasons.append(f"+{energy_bonus:.2f} energy closeness")
+    reasons.append(
+        f"+{energy_bonus:.2f} energy closeness (x{ENERGY_WEIGHT:.1f})")
 
     # Small tie-breaker bonus based on acoustic preference.
     acousticness = float(song_dict.get("acousticness", 0.0))
@@ -115,6 +124,7 @@ def _score_song(
         reasons.append("+0.5 non-acoustic preference match")
 
     return {"total": score, "reasons": reasons}
+
 
 def load_songs(csv_path: str) -> List[Dict]:
     """
@@ -141,6 +151,7 @@ def load_songs(csv_path: str) -> List[Dict]:
             )
     return songs
 
+
 def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str]]:
     """
     Functional implementation of the recommendation logic.
@@ -148,7 +159,8 @@ def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tup
     """
     user_genre = user_prefs.get("favorite_genre", user_prefs.get("genre", ""))
     user_mood = user_prefs.get("favorite_mood", user_prefs.get("mood", ""))
-    target_energy = float(user_prefs.get("target_energy", user_prefs.get("energy", 0.5)))
+    target_energy = float(user_prefs.get(
+        "target_energy", user_prefs.get("energy", 0.5)))
     likes_acoustic = user_prefs.get("likes_acoustic")
 
     scored: List[Tuple[Dict, float, str]] = []

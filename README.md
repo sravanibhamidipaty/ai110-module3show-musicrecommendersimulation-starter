@@ -177,6 +177,36 @@ The image below shows the formatted recommendation output from running `python -
 
 ![Terminal recommendations output](assets/terminal_recommendations.png)
 
+### Stress Test with Diverse Profiles
+
+Profiles evaluated in `src/main.py`:
+- High-Energy Pop
+- Chill Lofi
+- Deep Intense Rock
+- Edge Case: High Energy + Sad Mood
+- Edge Case: Unknown Genre/Mood
+
+Prompt for a new chat session named "System Evaluation" (with `#codebase` context):
+
+"Using #codebase, suggest adversarial user preference profiles for this music recommender so I can stress-test scoring behavior. Include at least 3 edge cases with conflicting or unusual preferences (for example: very high energy + mood that does not exist in the catalog, unknown genre, or acoustic preference that conflicts with energy target). For each profile, explain what failure mode or bias it is testing and what outputs would look suspicious." 
+
+Stress test screenshots:
+
+#### High-Energy Pop
+![High-Energy Pop recommendations](assets/stress_high_energy_pop.png)
+
+#### Chill Lofi
+![Chill Lofi recommendations](assets/stress_chill_lofi.png)
+
+#### Deep Intense Rock
+![Deep Intense Rock recommendations](assets/stress_deep_intense_rock.png)
+
+#### Edge Case: High Energy + Sad Mood
+![Edge case high energy sad mood recommendations](assets/stress_edge_case_high_energy_sad_mood.png)
+
+#### Edge Case: Unknown Genre/Mood
+![Edge case unknown genre mood recommendations](assets/stress_edge_case_unknown_genre_mood.png)
+
 ---
 
 ## Experiments You Tried

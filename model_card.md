@@ -61,29 +61,13 @@ Prompts:
 
 ## 6. Limitations and Bias 
 
-Where the system struggles or behaves unfairly. 
-
-Prompts:  
-
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+This system can create a filter bubble because songs that are closest in energy keep rising to the top, even when mood does not match. During the experiment, I doubled energy weight and cut genre weight in half, and this made high-energy songs dominate many profiles. That is why tracks like Gym Hero still show up for users who asked for happy pop or even conflicting moods, because its energy is close and it also gets genre points for pop. Another limitation is that the catalog is small and mood labels are narrow, so users with uncommon moods or genres get results based mostly on energy distance instead of true taste fit.
 
 ---
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
-
-Prompts:  
-
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
-
-No need for numeric metrics unless you created some.
+I tested five profiles: High-Energy Pop, Chill Lofi, Deep Intense Rock, Edge Case High Energy + Sad Mood, and Edge Case Unknown Genre/Mood. I looked at the top 5 songs and checked whether the reasons matched what the profile asked for. The results were partly accurate and partly just different after the weight shift: genre mattered less, and energy closeness took over the ranking. The most surprising pattern was that Gym Hero kept appearing for multiple profiles, not because it matched mood well, but because its energy is very close to high-energy targets and it is in the pop genre. In plain language, the model is good at matching "vibe intensity" but weaker at understanding emotional intent.
 
 ---
 

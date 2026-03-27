@@ -1,0 +1,33 @@
+Loaded songs: 18
+
+Top recommendations for profile genre=pop, mood=happy, energy=0.8
+
+1. Sunrise City
+   Score   : 3.98
+   Reasons :
+     - +2.0 genre match
+     - +1.0 mood match
+     - +0.98 energy closeness
+
+2. Gym Hero
+   Score   : 2.87
+   Reasons :
+     - +2.0 genre match
+     - +0.87 energy closeness
+
+3. Rooftop Lights
+   Score   : 1.96
+   Reasons :
+     - +1.0 mood match
+     - +0.96 energy closeness
+
+4. Night Drive Loop
+   Score   : 0.95
+   Reasons :
+     - +0.95 energy closeness
+
+5. City Cipher
+   Score   : 0.94
+   Reasons :
+     - +0.94 energy closeness
+
