@@ -29,6 +29,113 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+Real-world recommendation systems combine many signals (content, past behavior, context, and popularity) to estimate how likely a user is to enjoy each item, then rank results to balance relevance and variety. This simulation focuses on transparent content-based signals only: it priorities songs that match a user on genre and mood while rewarding songs whose energy is close to the user target, with acoustic preference used as an additional tie-break style signal.
+
+### Plan Input to Process to Output
+
+Input:
+- User preferences: favorite genre, favorite mood, target energy, acoustic preference.
+- Song catalog loaded from data/songs.csv.
+
+Process:
+- Iterate through each song in the catalog.
+- Score each song with the same recipe.
+- Store song, score, and explanation text.
+
+Output:
+- Sort all songs by score in descending order.
+- Return the top k recommendations.
+
+### Scoring Logic Design
+
+Finalized Algorithm Recipe:
+- Genre match: `+2.0` points if song genre equals the user's favorite genre.
+- Mood match: `+1.0` points if song mood equals the user's favorite mood.
+- Energy similarity: `+(1 - abs(song_energy - target_energy))` points, clipped to `[0.0, 1.0]`.
+- Acoustic tie-break:
+  - `+0.5` if user likes acoustic songs and `acousticness >= 0.60`
+  - `+0.5` if user prefers non-acoustic songs and `acousticness <= 0.40`
+
+Final score formula:
+
+`score = genre_points + mood_points + energy_similarity + acoustic_bonus`
+
+Ranking rule:
+- Compute score for every song.
+- Sort songs by descending score.
+- Return top `k` songs.
+
+Potential bias note:
+- This system may over-prioritize genre, which can push down strong mood or energy matches from other genres.
+- Because the catalog is small, recommendations also reflect dataset coverage and may under-serve niche tastes.
+
+### Data Flow Map
+
+Input:
+- User preferences (`favorite_genre`, `favorite_mood`, `target_energy`, `likes_acoustic`)
+- Song catalog from `data/songs.csv`
+
+Process:
+- Load all songs.
+- Loop through songs one by one.
+- For each song, compute score components:
+  - genre points
+  - mood points
+  - energy similarity
+  - acoustic tie-break bonus
+- Store `(song, score, explanation)`.
+
+Output:
+- Sort all scored songs by score descending.
+- Return top `k` recommendations.
+
+```mermaid
+flowchart TD
+    A[Input User Preferences] --> B[Load songs.csv]
+    B --> C{For each song in catalog}
+    A --> C
+    C --> D[Check genre match +2.0]
+    D --> E[Check mood match +1.0]
+    E --> F[Compute energy similarity score]
+    F --> G[Apply acoustic tie-break bonus]
+    G --> H[Create song score and explanation]
+    H --> I[Append to scored list]
+    I --> C
+    C -->|after last song| J[Sort by score descending]
+    J --> K[Select Top K songs]
+    K --> L[Output Ranked Recommendations]
+```
+
+Prompt to use in a new chat session named "Scoring Logic Design" (with `#file:songs.csv` attached):
+
+"Using #file:songs.csv, help me tune a transparent scoring rule for a small music recommender. I currently use +2.0 for genre match, +1.0 for mood match, and up to +1.0 for energy closeness using 1 - abs(song_energy - target_energy). Suggest 2-3 alternative weight settings and explain tradeoffs (precision vs variety). Also recommend reasonable thresholds for an acousticness tie-break bonus and how large that bonus should be so it does not overpower genre/mood." 
+
+Song features used in this simulation:
+- `id`
+- `title`
+- `artist`
+- `genre`
+- `mood`
+- `energy`
+- `tempo_bpm`
+- `valence`
+- `danceability`
+- `acousticness`
+
+UserProfile features used in this simulation:
+- `favorite_genre`
+- `favorite_mood`
+- `target_energy`
+- `likes_acoustic`
+
+### Phase 2 Designing the Simulation: Create a User Profile
+taste_profile = {
+  "favorite_genre": "lofi",
+  "favorite_mood": "chill",
+  "target_energy": 0.40,
+  "likes_acoustic": True
+}
+
 ---
 
 ## Getting Started
@@ -63,6 +170,12 @@ pytest
 ```
 
 You can add more tests in `tests/test_recommender.py`.
+
+### Terminal Output Screenshot
+
+The image below shows the formatted recommendation output from running `python -m src.main` with the default profile (`pop` / `happy` / energy `0.8`).
+
+![Terminal recommendations output](assets/terminal_recommendations.png)
 
 ---
 
